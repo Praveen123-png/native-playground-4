@@ -1,4 +1,5 @@
-import { Text, TouchableOpacity, TouchableOpacityProps } from "react-native";
+import { TouchableOpacity, TouchableOpacityProps } from "react-native";
+import CustomText from "../atom/CustomText";
 
 type Variant = "primary" | "outline" | "disabled";
 
@@ -27,13 +28,14 @@ export default function Button({
   return (
     <TouchableOpacity
       activeOpacity={0.7}
+      // onPress={onPressProps}
       disabled={variant === "disabled"}
-      className={`w-full py-4 rounded-xl ${buttonStyles[variant]} ${className}`}
+      className={` py-4 rounded-xl ${buttonStyles[variant]} ${className}`}
       {...props}
     >
-      <Text className={`text-xl font-medium text-center ${textStyles[variant]}`}>
+      <CustomText variant="button" className={`${textStyles[variant]}`}>
         {title}
-      </Text>
+      </CustomText>
     </TouchableOpacity>
   );
 }

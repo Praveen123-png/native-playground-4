@@ -1,13 +1,15 @@
 import Button from "@/components/atom/Button";
+import CustomInput from "@/components/atom/CustomInput";
 import CustomText from "@/components/atom/CustomText";
 import { useState } from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import "../global.css";
 
 export default function Index() {
   const [active, setActive] = useState("phone");
   const [mobile, setMobile] = useState("");
+  const [countryCode, setCountryCode] = useState("+91");
 
   return (
     <SafeAreaView className="justify-center flex-1">
@@ -24,6 +26,7 @@ export default function Index() {
 
         <View className="flex-row w-full p-1 mt-10 bg-gray-200 rounded-full">
           <TouchableOpacity
+            activeOpacity={0.7}
             onPress={() => setActive("phone")}
             className={`flex-1 items-center py-5 rounded-full ${
               active === "phone" ? "bg-appGreen" : ""
@@ -33,6 +36,7 @@ export default function Index() {
           </TouchableOpacity>
 
           <TouchableOpacity
+            activeOpacity={0.7}
             onPress={() => setActive("email")}
             className={`flex-1 items-center py-5 rounded-full ${
               active === "email" ? "bg-appGreen" : ""
@@ -42,17 +46,34 @@ export default function Index() {
           </TouchableOpacity>
         </View>
 
-        <View className="flex-row gap-5 mt-5">
-          <Text className="px-8 py-5 text-xl text-gray-600 bg-gray-200 rounded-full">
+        <View className="flex-row gap-5 px-1 mt-5">
+          {/* <Text className="px-8 py-5 text-xl text-gray-600 bg-gray-200 rounded-xl">
             +91
-          </Text>
+          </Text> */}
 
-          <TextInput
-            className="flex-1 px-8 py-5 text-xl bg-gray-200 rounded-full"
+          {/* <TextInput
+            className="flex-1 px-8 py-5 text-xl bg-gray-200 rounded-xl"
             placeholder="123-456-7890"
             keyboardType="numeric"
             value={mobile}
             onChangeText={setMobile}
+          /> */}
+
+          <CustomInput
+            value={countryCode}
+            onChangeText={setCountryCode}
+            rounded="full"
+            size="xl"
+            placeholder="+91"
+          />
+
+          <CustomInput
+            size="lg"
+            rounded="full"
+            value={mobile}
+            onChangeText={setMobile}
+            placeholder="123-456-7890"
+            className="flex-1"
           />
         </View>
 
@@ -64,7 +85,7 @@ export default function Index() {
           <Text className="text-xl font-medium text-center">Continue</Text>
         </TouchableOpacity> */}
 
-        <Button title="Continue" className="mt-10" />
+        <Button title="Continue" className="w-full mt-10" />
 
         <View className="flex-row items-center justify-center my-6">
           <View className="flex-1 h-[1px] bg-gray-300 " />
